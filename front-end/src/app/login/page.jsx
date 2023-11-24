@@ -16,7 +16,7 @@ export default function login() {
         password: logData.password,
       });
       if(data?.user) {
-        localStorage.setItem("uid", data.user.id);
+        localStorage.setItem("uid", data.user._id);
         router.push('/');
       }
     }
@@ -50,14 +50,17 @@ export default function login() {
           </div>
         </div>
         <Link href="/menu">
-        <button className='h-[60px] rounded-[10px] bg-cyan-400 text-[20px] text-white font-sans w-[400px]' >Sign Up</button>
-        
+        <button className='h-[60px] rounded-[10px] bg-cyan-400 text-[20px] text-white font-sans w-[400px]'
+         onClick={handleLogin}
+        >Sign Up</button>
+
         </Link>
+        
         <div className=' w-[400px] flex flex-row gap-[15px] justify-center'> 
         <p className='text-white'>Already Have a Account?</p>
         <Link href="/sign">
         <button className='family-sans text-sky-600'
-        onClick={handleLogin}> Login</button>
+       > Login</button>
 
         </Link>
 

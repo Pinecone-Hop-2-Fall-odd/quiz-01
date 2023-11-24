@@ -1,6 +1,8 @@
+'use client'
+
 import Question from "../icons/question"
 import Profile from "../icons/profile"
-import { Link } from "react-router-dom"
+import  Link from "next/link"
 
 export default function mainQuiz() {
     return (
@@ -14,10 +16,13 @@ export default function mainQuiz() {
           <p className='text-[40px] text-white family-sans mt-[10px]'>Enhmunh</p>
 
           </div>
+          <Link href="https://www.youtube.com/watch?v=-ThRhdlD9jo">
           <button className="w-[80px] h-[80px] rounded-full border-[3px] border-solid border-white">
           <Question/>
 
           </button>
+          
+          </Link>
         </div>
         <div className='w-[1000px] h-[400px] rounded-[20px]   flex justify-center items-center' >
           <div className='w-[600px] h-[300px] rounded-[20px]  border-white border-[5px] border-solid'>
