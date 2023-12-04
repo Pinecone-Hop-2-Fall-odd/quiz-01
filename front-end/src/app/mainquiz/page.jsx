@@ -82,7 +82,7 @@ export default function mainQuiz() {
     answer: [{ text: "Why?", isCorrect: false, isChosen: false },
     { text: "When?", isCorrect: false, isChosen: false },
     { text: "Where?", isCorrect: true, isChosen: false },
-    { text: "WHo?", isCorrect: false, isChosen: false }
+    { text: "Who?", isCorrect: false, isChosen: false }
     ]
   },
   {

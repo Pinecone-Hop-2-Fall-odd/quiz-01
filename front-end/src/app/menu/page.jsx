@@ -6,26 +6,26 @@ import Link from "next/link";
 import Settings from "../icons/settings";
 import { useRouter } from "next/navigation";
 import Custom from "../icons/edit";
+import Profile from "../icons/profile";
 
 export default function Menu() {
 
 
   const router = useRouter();
 
-  function Login()  {
-    router.push('/sign')
-  }
+  
   return (
     <main className="flex w-screen h-screen bg-violet-500 justify-center items-center">
      
 
     <div className=" w-[700px] h-[1100px] bg-violet-700 rounded-2xl border-[5px] border-solid border-white">
       <div className=" h-[200px] flex flex-row">
-        <button className="w-[100px] h-[100px] rounded-full border-[5px] border-solid border-white text-center text-[30px] text-white font-medium m-[20px]">A</button>
+        <button className="w-[100px] h-[100px] rounded-full border-[5px] border-solid border-white text-center text-[30px] text-white font-medium m-[20px] pl-[5px] active:opacity-70" 
+        onClick={() => router.push('/type')}><Profile/></button>
             <p className="text-white text-[60px] mt-[20px] font-medium">ssshhshs</p>
 
-            <button className="w-[150px] h-[70px] rounded-[50px] border-[5px] border-solid border-white text-center text-[30px] pt-[5px] text-white font-medium mt-[25px] ml-[100px]" 
-            onClick={Login} >Login</button>
+            <button className="w-[150px] h-[70px] rounded-[50px] border-[5px] border-solid border-white text-center text-[30px] pt-[5px] text-white font-medium mt-[25px] active:opacity-70 ml-[100px]" 
+            onClick={() => router.push('/sign')} >Login</button>
 
           
       </div>
@@ -37,20 +37,22 @@ export default function Menu() {
       </div>
 
       <div className="flex flex-col gap-[50px] justify-center items-center text-center ">
-        <Link href="/mainquiz">
-          <button className="w-[550px] h-[100px] rounded-[50px] items-center flex gap-[10px] border-[5px] border-solid border-white flex gap-[30px] active:opacity-70 " >
+       
+          <button className="w-[550px] h-[100px] rounded-[50px] items-center flex gap-[10px] border-[5px] border-solid border-white flex gap-[30px] active:opacity-70 "
+          onClick={() => router.push('/mainquiz')} >
             <Play className='w-[70px] h-[70px] rounded-full  ml-[10px] fill-white' />
             <p className="text-white text-[40px] font-medium ">Play</p>
           </button>
 
-        </Link>
+        
        
-          <Link href="/createdquiz">
+          
           <button className="w-[550px] h-[100px] rounded-[50px] flex gap-[20px] border-[5px] border-solid border-white items-center flex gap-[30px] active:opacity-70"
+          onClick={()=> router.push('/createdquiz')}
            >
             <Custom className=" ml-[10px] font-small "/>
             <p className="text-white text-[40px] font-medium ">Qustom quiz</p>
-          </button></Link>
+          </button>
       </div>
 
 
@@ -65,14 +67,18 @@ export default function Menu() {
           </p>
         </button>
         </Link>
-        <Link href='/CustomQuiz'>
-        <button className="flex gap-[15px] decoration-white font-sans text-[40px] font-medium active:opacity-70 mb-[3px]">
+        
+        <Link href="/CustomQuiz">
+
+        <button className="flex gap-[15px] decoration-white font-sans text-[40px] font-medium active:opacity-70 mb-[3px]"
+       >
             <FaPlus className='mt-[10px] fill-white' />
             <p className="text-white text-[40px] font-medium active:opacity-70 ">Add quiz</p>
 
           </button>
-</Link>
-      
+
+        </Link>
+    
       </div>
 
     </div>

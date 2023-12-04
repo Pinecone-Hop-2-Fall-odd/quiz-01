@@ -12,11 +12,12 @@ export default function login() {
   async function handleLogin() {
 
 
-    const { data } = await axios.post("http://localhost:8800/login", {
+    const { data } = await axios.post("http://localhost:8800/user", {
       email: logData.email,
       username: logData.username,
       password: logData.password,
     });
+    console.log(data);
     if (data?.user) {
       localStorage.setItem("uid", data.user._id);
       router.push('/');
