@@ -1,6 +1,6 @@
 import { UserModel } from "../model/user-model.js";
 
-export const login = async (req, res) => {
+export const SignUp = async (req, res) => {
     const body = req.body;
     
 
