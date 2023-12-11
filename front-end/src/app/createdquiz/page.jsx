@@ -16,7 +16,7 @@ export default function Home() {
         }
     }
      const SearchQuiz = async(e) => {
-        const data = await axios.get(`http://localhost:8800/user/${zz}`, {
+        const data = await axios.get(`http://localhost:8800/quiz/`, {
             type: search.type
         });
     }
@@ -56,7 +56,6 @@ export default function Home() {
                     <button className="w-[140px] h-[38px] rounded-[10px] border-[3px] border-solid border-solid font-sans text-[20px] text-white font-medium border-[2px] border-solid border-white">Start</button>
             </div>
             
-
         </div>
 
         </div>

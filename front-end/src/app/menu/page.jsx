@@ -1,5 +1,5 @@
 'use client'
-
+import axios from "axios";
 import Play from "../icons/play";
 import { FaPlus } from "react-icons/fa";
 import Link from "next/link";
@@ -7,11 +7,15 @@ import Settings from "../icons/settings";
 import { useRouter } from "next/navigation";
 import Custom from "../icons/edit";
 import Profile from "../icons/profile";
+import { useState } from "react";
 
 export default function Menu() {
-
-
-  const router = useRouter();
+  const [user, setUser] = useState([]);
+  const router = useRouter()
+  const data = axios.get(`http://localhost:8800/user`,  {
+    username: user.username,
+  });
+  console.log(user);
 
   
   return (
@@ -39,7 +43,7 @@ export default function Menu() {
       <div className="flex flex-col gap-[50px] justify-center items-center text-center ">
        
           <button className="w-[550px] h-[100px] rounded-[50px] items-center flex gap-[10px] border-[5px] border-solid border-white flex gap-[30px] active:opacity-70 "
-          onClick={() => router.push('/mainquiz')} >
+          onClick={() => router.push('/type')} >
             <Play className='w-[70px] h-[70px] rounded-full  ml-[10px] fill-white' />
             <p className="text-white text-[40px] font-medium ">Play</p>
           </button>
@@ -58,7 +62,7 @@ export default function Menu() {
 
 
       <div className="flex flex-row gap-[100px] h-[260px] justify-center items-end ml-[10px]">
-        <Link href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+        <Link href="https://www.youtube.com/watch?v=BbeeuzU5Qc8">
         <button className="flex gap-[15px] decoration-white font-sans text-[40px] font-medium "
        >
           <Settings className='mt-[10px]' />

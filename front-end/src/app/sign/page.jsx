@@ -11,23 +11,20 @@ export default function Sign() {
   const router = useRouter();
 
     async function handleLogin() {
-      const { data } = axios.get('http://localhost:8800/user/SignUp',{
+      const data = await axios.post('http://localhost:8800/SignIn', {
         email: logData.email,
-        username: logData.username,
-        password: logData.password,
-      });
-      if(data?.user) {
-        localStorage.setItem("uid", data.user.id);
-        router.push('/');
+        password: logData.password
       }
+      
+      );
+      console.log(logData);
       router.push('/menu')
+      console.log(data);
     }
-    function SignUP() {
-        router.push('/login')
-    }
+   
     return (
         <main className="flex w-screen h-screen bg-violet-500 justify-center items-center">
-            <div className='w-[500px] h-[550px] bg-violet-700 border-[5px] border-solid border-white rounded-2xl flex justify-center '>
+            <div className='w-[500px] h-[500px] bg-violet-700 border-[5px] border-solid border-white rounded-2xl flex justify-center '>
 
                 <div className='w-[400px] flex gap-[20px] flex-col'>
                     <p className='text-[40px] family-sans text-white font-medium mt-[30px] '>Login</p>
@@ -55,11 +52,7 @@ export default function Sign() {
                         <button className='h-[60px] rounded-[10px] bg-violet-700 border-[3px] border-solid border-white font-medium text-[25px] text-white font-sans w-[400px] active:opacity-70'
                         onClick={handleLogin} >Login</button>
                  
-                    <div className=' w-[400px] flex flex-row gap-[15px] justify-center'>
-                        <p className='text-white'>Don't Have a Account?</p>
-                            <button className='family-sans text-sky-600 active:opacity-70'
-                                onClick={SignUP}> Sign Up</button>
-                    </div>
+                 
                 </div>
             </div>
 
