@@ -1,8 +1,8 @@
 import { UserModel } from "../model/user-model.js";
+import bcrypt from "bcrypt";
 
-export const SignUp = async (req, res) => {
+export const SignIn = async (req, res) => {
     const body = req.body;
-    
 
     if (body.email === undefined) {
         res.status(403).json({ message: "Email required" })
@@ -18,9 +18,18 @@ export const SignUp = async (req, res) => {
     if (!One) {
         res.status(405).json({ message: "User not found" });
     } else {
+        if (await bcrypt.compare(body.password, One.password)) {
+            const token = jwt.sign(
+                {user_id: One._id, email: One.email},
+                "Ultraprivatekey",
+                {
+                    expriresIn: "2h",
+                }
+            )
 
-        if (One.password === body.password) {
-            res.status(200).json({ user: One});
+
+
+            res.status(200).json({ token });
             return;
         } else {
             res.status(405).json({ message: "Password not match" });
