@@ -11,7 +11,7 @@ export default function home() {
     const Questions = [{
       type: "Spanish",
       point: "8",
-      question: "Enero",
+      question: "",
       number: 1,
       answer: [{ text: "March", isCorrect: false, isChosen: false },
       { text: "January", isCorrect: true, isChosen: false },

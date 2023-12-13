@@ -7,17 +7,17 @@ import Settings from "../icons/settings";
 import { useRouter } from "next/navigation";
 import Custom from "../icons/edit";
 import Profile from "../icons/profile";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Menu() {
-  const [user, setUser] = useState([]);
-  const router = useRouter()
-  const data = axios.get(`http://localhost:8800/user`,  {
-    username: user.username,
-  });
-  console.log(user);
 
-  
+  const [ name, setName] = useState("");
+  const [user, setUser] = useState([]);
+  const router = useRouter();
+
+  const data = axios.get(`http://localhost:8800/${_id}`);
+
+
   return (
     <main className="flex w-screen h-screen bg-violet-500 justify-center items-center">
      

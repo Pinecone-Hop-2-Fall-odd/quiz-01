@@ -17,10 +17,14 @@ export default function Sign() {
       }
       
       );
-      console.log(logData);
-      router.push('/menu')
-      console.log(data);
+      if (data?.user) {
+     
+        router.push('/');
+      }
+        router.push('/menu');
+     
     }
+    
    
     return (
         <main className="flex w-screen h-screen bg-violet-500 justify-center items-center">

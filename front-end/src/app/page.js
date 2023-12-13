@@ -2,6 +2,7 @@
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
+import Sign from './sign/page'
 
 export default function Home() {
   const router = useRouter();
@@ -16,7 +17,6 @@ export default function Home() {
 
   return (
     <main className="flex w-screen h-screen bg-amber-100 justify-center items-center">
-     
 
     </main>
   )

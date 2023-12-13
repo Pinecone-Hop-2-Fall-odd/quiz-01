@@ -14,70 +14,70 @@ export default function home() {
         point: "8",
         question: "Leo",
         number: 1,
-        answer: [{ text: "Read"}]
+        answer: "Read"
     },
     {
       type: "Spanish",
       point: "8",
       question: "Libra",
       number: 2,
-      answer: [{ text: "Book" }]
+      answer: "Read"
   },
   {
     type: "Spanish",
     point: "8",
     question: "Quiero",
     number: 3,
-    answer: [{ text: "Want"}]
+    answer: "Read"
 },
 {
   type: "Spanish",
   point: "8",
   question: "Ingles",
   number: 4,
-  answer: [{ text: "English" }]
+  answer: "Read"
 },
 {
   type: "Spanish",
   point: "8",
   question: "Comprendo",
   number: 5,
-  answer: [{ text: "Question" }]
+  answer: "Read"
 },
 {
   type: "Spanish",
   point: "8",
   question: "Leche",
   number: 6,
-  answer: [{ text: "Milk" }]
+  answer: "Read"
 },
 {
   type: "Spanish",
   point: "8",
   question: "Mujer",
   number: 7,
-  answer: [{ text: "Woman" }]
+  answer: "Read"
 },
 {
   type: "Spanish",
   point: "8",
   question: "Maestro",
   number: 8,
-  answer: [{ text: "Teacher" }]
+  answer: "Read"
 },
 {
   type: "Spanish",
   point: "8",
   question: "Mayo",
   number: 9,
-  answer: [{ text: "March"}]
+  answer: "Read"
 },
 {
   type: "Spanish",
   point: "8",
   question: "Pan",
   number: 10,
-  answer: [{ text: "Bread"}]
+  answer: "Read"
 },
   ] 
     
@@ -87,13 +87,15 @@ export default function home() {
         router.push('/menu')
       }
     }
-    async function HandleAnswers(i) {
+    async function HandleAnswers(value) {
       const Answer = logData
-      if(Answer === undefined) {
+
+      if(Answer === null) {
         alert("PLease Put your answer")
       } else {
 
-        if(Questions[questionIndex].answer.text === Answer) {
+        if(Questions[questionIndex].answer === Answer) {
+          console.log('correct')
         } else {
           console.log('incorrect')
 
@@ -103,7 +105,7 @@ export default function home() {
         }, 900)
       }
       }
-    console.log(logData);
+      console.log(logData)
 
     return (
         <main className="flex w-screen h-screen bg-violet-500 justify-center items-center">
@@ -140,8 +142,9 @@ export default function home() {
 
             <input className={` w-[550px] text-white h-[80px] rounded-2xl border-white border-solid border-[5px] bg-violet-700  text-[30px] font-sans font-medium`}
             placeholder="Write your answers here"
-            onChange={(e) =>setLogData((a) =>(e.target.value)) }/>
-            <button className={`h-[80px] rounded-[10px] bg-violet-700 border-[3px] border-solid border-white font-medium text-[25px] text-white font-sans w-[120px] ${logData === Questions[questionIndex].answer.text ? "active:bg-green-700" : "active:bg-red-700"} active:opacity-70`}
+            onChange={(e) =>setLogData(() =>(e.target.value))}/>
+
+            <button className={`h-[80px] rounded-[10px] bg-violet-700 border-[3px] border-solid border-white font-medium text-[25px] text-white font-sans w-[120px] ${logData === Questions[questionIndex].answer ? "active:bg-green-700" : "active:bg-red-700"} active:opacity-70`}
             onClick={HandleAnswers}
            >Submit</button>
 
