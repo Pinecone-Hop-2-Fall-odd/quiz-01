@@ -15,7 +15,7 @@ export const createQuiz = async (req, res) => {
     }
 }
 export const getAllQuiz = async (req, res) => {
-    const quiz_data = question.find({});
+    const quiz_data = questionModel.find({});
     res.status(200).json({ quizzes: quiz_data });
 }
 export const getQuiz = async (req, res) => {

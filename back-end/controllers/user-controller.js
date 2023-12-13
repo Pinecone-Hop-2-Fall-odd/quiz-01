@@ -22,7 +22,7 @@ export const getUser = async (req, res) => {
 export const createUser = async (req, res) => {
     try{
         const body = req.body;
-        const hashedpassword = await bcrypt.hash(request.body.password, 10)
+        const hashedpassword = await bcrypt.hash(req.body.password, 10)
          await UserModel.create({
             username: body.username,
             email: body.email,
@@ -32,7 +32,6 @@ export const createUser = async (req, res) => {
         res.status(200).json({users: users})
 
     } catch(err) {
-        console.log("error");
         res.status(405).json({message: err.message});
     }
   
