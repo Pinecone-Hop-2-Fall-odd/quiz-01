@@ -132,6 +132,10 @@ export default function mainQuiz() {
     } else {
       console.log('incorrect');
     }
+    if(questionIndex >= 9) {
+      router.push('/congrats')
+       } else [
+       ]
     setTimeout(() => {
       setQuestionIndex((prev) => prev + 1)
     }, 100)

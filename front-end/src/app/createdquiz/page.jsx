@@ -6,8 +6,39 @@ import { useState } from "react";
 import Search from "../icons/search";
 
 export default function Home() {
+    const Tests = [{
+        type: "Spanish",
+        Creater: "Peanut butta",
+    },
+    {
+        type: "Spanish",
+        Creater: "Peanut butta",
+    },
+    {
+        type: "Spanish",
+        Creater: "Peanut butta",
+    },
+    {
+        type: "Spanish",
+        Creater: "Peanut butta",
+    },
+    {
+        type: "Spanish",
+        Creater: "Peanut butta",
+    },{
+        type: "Spanish",
+        Creater: "Peanut butta",
+    },
+    {
+        type: "Spanish",
+        Creater: "Peanut butta",
+    },
+    {
+        type: "Spanish",
+        Creater: "Peanut butta",
+    }];
     const [defIndex, setDefIndex] = useState(0);
-    const [search, setSearch] = useState("");
+    const [search, setSearch] = useState({});
     const router = useRouter();
     function Leaveout() {
         const message = "Are you sure about leaving?"
@@ -16,8 +47,7 @@ export default function Home() {
         }
     }
      const SearchQuiz = async(e) => {
-        const data = await axios.get(`http://localhost:8800/quiz/`, {
-            type: search.type
+        const data = await axios.get("http://localhost:8800/quiz", {
         });
     }
     return (
@@ -46,18 +76,19 @@ export default function Home() {
             </div> 
             <p className="text-[45px] font-medium text-white family-sans">Results:</p>
         <div className="flex flex-wrap gap-[20px] overflow-y-scroll">
-       
-            <div className="w-[300px] h-[170px] border-white border-[3px] border-solid rounded-[20px] pl-[15px] pt-[10px] gap-[10px]">
-                <p className="text-[22px] text-white font-sans font-medium">Type: Spanish</p>
+            {Tests.map((Tests, index) => {
+                return (
+                <div className="w-[300px] h-[170px] border-white border-[3px] border-solid rounded-[20px] pl-[15px] pt-[10px] gap-[10px]">
+                     <p className="text-[22px] text-white font-sans font-medium">Type:{Tests.type}</p>
                 <div className="flex flex-row gap-[25px] ">
-                    <p className="text-[20px] text-white font-sans font-medium ">Created by: Enhmunh</p>
+                     <p className="text-[20px] text-white font-sans font-medium ">Created by:{Tests.Creater}</p>
+                    </div>
+                    <p className="border-[3px] border-solid border-white text-[18px] text-center font-sans font-medium  h-[30px] w-[200px] text-white mt-[5px] mb-[10px] rounded-[10px]">1 question</p>
+                        <button className="w-[140px] h-[38px] rounded-[10px] border-[3px] border-solid border-solid font-sans text-[20px] text-white font-medium border-[2px] border-solid border-white active:opacity-70"
+                        onClick={() => router.push('/mainquiz')}>Start</button>
                 </div>
-                <p className="border-[3px] border-solid border-white text-[18px] text-center font-sans font-medium  h-[30px] w-[200px] text-white mt-[5px] mb-[10px] rounded-[10px]">1 question</p>
-                    <button className="w-[140px] h-[38px] rounded-[10px] border-[3px] border-solid border-solid font-sans text-[20px] text-white font-medium border-[2px] border-solid border-white">Start</button>
-            </div>
-            
+                )})}
         </div>
-
         </div>
     </main>
     )

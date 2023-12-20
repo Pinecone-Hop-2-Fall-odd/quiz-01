@@ -15,7 +15,7 @@ export default function Menu() {
   const [user, setUser] = useState([]);
   const router = useRouter();
 
-  const data = axios.get(`http://localhost:8800/${_id}`);
+
 
 
   return (
@@ -25,7 +25,7 @@ export default function Menu() {
     <div className=" w-[700px] h-[1100px] bg-violet-700 rounded-2xl border-[5px] border-solid border-white">
       <div className=" h-[200px] flex flex-row">
         <button className="w-[100px] h-[100px] rounded-full border-[5px] border-solid border-white text-center text-[30px] text-white font-medium m-[20px] pl-[5px] active:opacity-70" 
-        onClick={() => router.push('/type')}><Profile/></button>
+        onClick={() => router.push('/profile')}><Profile/></button>
             <p className="text-white text-[60px] mt-[20px] font-medium">ssshhshs</p>
 
             <button className="w-[150px] h-[70px] rounded-[50px] border-[5px] border-solid border-white text-center text-[30px] pt-[5px] text-white font-medium mt-[25px] active:opacity-70 ml-[100px]" 
@@ -62,7 +62,7 @@ export default function Menu() {
 
 
       <div className="flex flex-row gap-[100px] h-[260px] justify-center items-end ml-[10px]">
-        <Link href="https://www.youtube.com/watch?v=BbeeuzU5Qc8">
+        <Link href="https://www.youtube.com/watch?v=QwLvrnlfdNo">
         <button className="flex gap-[15px] decoration-white font-sans text-[40px] font-medium "
        >
           <Settings className='mt-[10px]' />

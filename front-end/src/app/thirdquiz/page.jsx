@@ -14,70 +14,80 @@ export default function home() {
         point: "8",
         question: "Leo",
         number: 1,
-        answer: "Read"
+        answer: "Read",
+        iscorrect: false
     },
     {
       type: "Spanish",
       point: "8",
       question: "Libra",
       number: 2,
-      answer: "Read"
+      answer: "Book",
+      iscorrect: false
   },
   {
     type: "Spanish",
     point: "8",
     question: "Quiero",
     number: 3,
-    answer: "Read"
+    answer: "Want",
+    iscorrect: false
 },
 {
   type: "Spanish",
   point: "8",
   question: "Ingles",
   number: 4,
-  answer: "Read"
+  answer: "English",
+  iscorrect: false
 },
 {
   type: "Spanish",
   point: "8",
   question: "Comprendo",
   number: 5,
-  answer: "Read"
+  answer: "Question",
+  iscorrect: false
 },
 {
   type: "Spanish",
   point: "8",
   question: "Leche",
   number: 6,
-  answer: "Read"
+  answer: "Milk",
+  iscorrect: false
 },
 {
   type: "Spanish",
   point: "8",
   question: "Mujer",
   number: 7,
-  answer: "Read"
+  answer: "Woman",
+  iscorrect: false
 },
 {
   type: "Spanish",
   point: "8",
   question: "Maestro",
   number: 8,
-  answer: "Read"
+  answer: "Teacher",
+  iscorrect: false
 },
 {
   type: "Spanish",
   point: "8",
   question: "Mayo",
   number: 9,
-  answer: "Read"
+  answer: "May",
+  iscorrect: false
 },
 {
   type: "Spanish",
   point: "8",
   question: "Pan",
   number: 10,
-  answer: "Read"
+  answer: "Bread",
+  iscorrect: false
 },
   ] 
     
@@ -87,23 +97,24 @@ export default function home() {
         router.push('/menu')
       }
     }
-    async function HandleAnswers(value) {
-      const Answer = logData
-
-      if(Answer === null) {
+    async function HandleAnswers() {
+      const Answer = logData ;
+      if(Answer ===  null) {
         alert("PLease Put your answer")
-      } else {
-
-        if(Questions[questionIndex].answer === Answer) {
+      } if(Questions[questionIndex].answer == Answer) {
           console.log('correct')
+          Questions[questionIndex].iscorrect = true
         } else {
           console.log('incorrect')
 
         }
+        if(questionIndex >= 9) {
+          router.push("/congrats")
+        }
         setTimeout(() => {
           setQuestionIndex((prev) => prev + 1)
         }, 900)
-      }
+      
       }
       console.log(logData)
 
@@ -140,11 +151,11 @@ export default function home() {
             </div>
             <div className="flex flex-row gap-[45px]">
 
-            <input className={` w-[550px] text-white h-[80px] rounded-2xl border-white border-solid border-[5px] bg-violet-700  text-[30px] font-sans font-medium`}
+            <input className={` w-[550px] text-white h-[80px] rounded-2xl border-white border-solid border-[5px] bg-violet-700  text-[30px] font-sans font-medium px-3`}
             placeholder="Write your answers here"
             onChange={(e) =>setLogData(() =>(e.target.value))}/>
 
-            <button className={`h-[80px] rounded-[10px] bg-violet-700 border-[3px] border-solid border-white font-medium text-[25px] text-white font-sans w-[120px] ${logData === Questions[questionIndex].answer ? "active:bg-green-700" : "active:bg-red-700"} active:opacity-70`}
+            <button className={`h-[80px] rounded-[10px] bg-violet-700 border-[3px] border-solid border-white font-medium text-[25px] text-white ${ Questions[questionIndex].iscorrect ? "active:bg-red-700": "active:bg-green-700"} font-sans w-[120px]`}
             onClick={HandleAnswers}
            >Submit</button>
 

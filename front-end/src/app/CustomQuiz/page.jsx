@@ -8,28 +8,29 @@ import axios from "axios";
 const initialData = {
   type: "single select",
   question: "who are you?",
-  answers: {
-    0: {
+  answers: [
+    {
       answer: 'John',
       isCorrect: false
     },
-    1: {
+    {
       answer: 'Bob',
       isCorrect: false
     },
-    2: {
+    {
       answer: 'Merry',
       isCorrect: false
     },
-    3: {
+    {
       answer: 'Sodoo',
       isCorrect: true
     },
-  }
+  ]
 }
 
 export default function Home() {
-  const [quiz, setQuiz] = useState({});
+  const [quiz, setQuiz] = useState(initialData);
+  console.log("quiz", quiz)
   const router = useRouter();
   function Leaveout() {
     const message = "Are you sure about leaving?"
@@ -44,11 +45,7 @@ export default function Home() {
     const { data } = await axios.post('http://localhost:8800/quiz', {
       type: quiz.type,
       question: quiz.question,
-      answers: [{
-        text: quiz.text,
-        isCorrect: false
-      },
-      ]
+      answers: quiz.answers,
 
     });
     console.log(data);
@@ -59,6 +56,29 @@ export default function Home() {
     }
     console.log(quiz);
   }
+
+  const fruit = [
+    'a', 'b', 'c', 'd'
+  ]
+
+  function handlefriut() {
+    fruit.filter((a) => a!='a')
+    console.log(fruit);
+  }
+
+  handlefriut()
+
+  // func (yug ,yaj) => uurchulsun utga set yavulna
+
+  // ['alim', 'gadil', 'tarvas']
+
+  // gadil => samar
+
+  // for(let i =0; i<arr.length; i++) {
+  //  if(arr[i].toLowerCase() ==toLowerCase(gadil) ) {
+  //   pu
+  //  } 
+  // }
   return (
     <main className="flex w-screen h-[120vh] bg-violet-500 justify-center items-center">
 
@@ -91,7 +111,7 @@ export default function Home() {
               <p className="text-[30px] font-medium text-white family-sans">Correct Answer:</p>
               <input className="h-[70px] w-[500px] rounded-[10px] outline-0 text-[25px] family-sans text-gray border-[5px] border-solid bg-violet-700 text-white px-3"
                 placeholder="Required"
-                onChange={(e) => setQuiz((a) => ({ ...a, answers: { ...a.answers, 0: { type: e.target.value, isCorrect: true } } }))} />
+                onChange={(e) => setQuiz((a) => ({ ...a, answers: { type: e.target.value, isCorrect: true } }))} />
               <p className="text-[50px] text-white font-sa"></p>
             </div>
             <div className="  flex flex-col gap-[10px] mt-[50px]" >
@@ -99,15 +119,15 @@ export default function Home() {
 
               <input className="h-[70px] w-[500px] rounded-[10px] outline-0 text-[25px] family-sans text-gray border-[3px] border-solid bg-violet-700 text-white px-3"
                 placeholder="Required"
-                onChange={(e) => setQuiz((a) => ({ ...a, answers: { ...a.answers, 1: { type: e.target.value, isCorrect: false } } }))}
+                onChange={(e) => setQuiz((a) => ({ ...a, answers: { type: e.target.value, isCorrect: false } }))}
               />
               <input className="h-[70px] w-[500px] rounded-[10px] outline-0 text-[25px] family-sans text-gray border-[3px] border-solid bg-violet-700 text-white px-3"
                 placeholder="Required"
-                onChange={(e) => setQuiz((a) => ({ ...a, answers: { ...a.answers, 2: { type: e.target.value, isCorrect: false } } }))}
+                onChange={(e) => setQuiz((a) => ({ ...a, answers: { type: e.target.value, isCorrect: false } }))}
               />
               <input className="h-[70px] w-[500px] rounded-[10px] outline-0 text-[25px] family-sans text-gray border-[3px] border-solid bg-violet-700 text-white px-3"
                 placeholder="Required"
-                onChange={(e) => setQuiz((a) => ({ ...a, answers: { ...a.answers, 3: { type: e.target.value, isCorrect: false } } }))}
+                onChange={(e) => setQuiz((a) => ({ ...a, answers: { type: e.target.value, isCorrect: false } }))}
               />
             </div>
             <button className="h-[60px] rounded-[10px] bg-violet-700 border-[3px] border-solid border-white font-medium text-[25px] text-white font-sans w-[400px] mt-[50px] active:opacity-70"
