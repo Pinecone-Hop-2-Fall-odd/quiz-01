@@ -9,19 +9,6 @@ app.use(express.json());
 app.use(quizroute);
 app.use(userRouter);
 
-
-// app.post("/protected", auth, (req, res, next) => {
-//   res.status(200).json({
-//     data: "successful you got the protected route"
-//   });
-// });
-
-// app.post("/unprotected", auth, (req, res, next) => {
-//   res.status(200).json({
-//     data: "successful you got the unprotected route"
-//   })
-// })
-
 const connectDb = async () => {
   await mongoose.connect('mongodb+srv://nullification:baguette@cluster0.4wsafti.mongodb.net/')
   console.log('database connected');
